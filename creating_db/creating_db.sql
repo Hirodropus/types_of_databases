@@ -3,10 +3,9 @@ CREATE TABLE IF NOT EXISTS Genres (
   Title varchar(255) NOT NULL
 );
 
-create table if not exists Singers (
+CREATE TABLE IF NOT EXISTS Singers (
   id SERIAL primary key,
-  NickName VARCHAR(255) not null,
-  description TEXT
+  NickName VARCHAR(255) not null
 );
 
 CREATE TABLE IF NOT EXISTS Albums (
