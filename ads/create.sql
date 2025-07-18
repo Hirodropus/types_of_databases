@@ -12,20 +12,20 @@ CREATE TABLE IF NOT EXISTS Singers (
 CREATE TABLE IF NOT EXISTS Albums (
   id SERIAL PRIMARY KEY,
   AlbumName varchar(255) NOT NULL,
-  release_year integer
+  release_year INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS Tracks (
   id SERIAL  PRIMARY KEY,
   Name varchar(255) NOT NULL,
-  Duration INTERVAL NOT NULL,
-  Albums_id integer NOT NULL REFERENCES Albums (id)
+  Duration INTEGER NOT NULL,
+  Albums_id INTEGER NOT NULL REFERENCES Albums (id)
 );
 
 CREATE TABLE IF NOT EXISTS Compilations (
   id SERIAL PRIMARY KEY,
   Title varchar(255) NOT NULL,
-  release_year integer
+  release_year INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS Singer_Genres (

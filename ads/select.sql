@@ -21,8 +21,18 @@ WHERE nickname  NOT LIKE '% %';
 
 -- Название треков, которые содержат слово «мой» или «my»
 
-SELECT name  FROM tracks 
-WHERE name LIKE '%мой%' OR name LIKE '%my%';
+SELECT name FROM tracks
+WHERE string_to_array(LOWER(name), ' ') && ARRAY['мой', 'my'];
+
+SELECT name FROM tracks
+WHERE name ILIKE 'my %'
+	OR name ILIKE '% my'
+	OR name ILIKE '% my %'
+	OR name ILIKE 'my'
+	OR name ILIKE 'мой %'
+	OR name ILIKE '% мой'
+	OR name ILIKE '% мой %'
+	OR name ILIKE 'мой';
 
 -- Количество исполнителей в каждом жанре
 
@@ -47,8 +57,8 @@ ORDER BY avg_duration DESC;
 
 SELECT s.nickname FROM singers s 
 WHERE s.id NOT IN (SELECT ss.id FROM singers ss
-JOIN album_singer aa ON s.id = aa.singers_id  
-JOIN albums a ON a.id = aa.albums_id           
+JOIN album_singer aa ON ss.id = aa.singers_id
+JOIN albums a ON a.id = aa.albums_id
 WHERE release_year = 2020)
 ORDER BY nickname;
 
