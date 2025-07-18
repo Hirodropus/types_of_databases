@@ -110,6 +110,5 @@ WITH albums_tracks_counts AS (
     LEFT JOIN tracks t ON a.id = t.albums_id
     GROUP BY a.id, a.albumname
 )
-SELECT albumname
-FROM albums_tracks_counts
+SELECT albumname FROM albums_tracks_counts
 WHERE track_count = (SELECT MIN(track_count) FROM albums_tracks_counts);
